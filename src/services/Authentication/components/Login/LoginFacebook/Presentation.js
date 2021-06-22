@@ -1,11 +1,11 @@
 import { Button } from "@material-ui/core";
 import React from "react";
-import { FacebookOutlined } from "@ant-design/icons";
+import FacebookIcon from "@material-ui/icons/Facebook";
 const Presentation = () => {
   return (
     <div>
       <Button>
-        <FacebookOutlined />
+        <FacebookIcon />
       </Button>
     </div>
   );

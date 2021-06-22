@@ -12,7 +12,7 @@ const Presentation = () => {
   return (
     <div>
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static" style={{ backgroundColor: "#3f0340" }}>
           <Toolbar>
             <IconButton
               edge="start"
