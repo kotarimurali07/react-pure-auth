@@ -8,7 +8,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import { LockTwoTone } from "@ant-design/icons";
+import LockRoundedIcon from "@material-ui/icons/LockRounded";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { useStyles } from "../../styles/SignUp";
@@ -20,7 +20,7 @@ const Presentation = () => {
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockTwoTone />
+            <LockRoundedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign up
