@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-
+// import LoginEmail from "./services/Authentication/components/Login/LoginEmail";
+// import LoginFaceBook from "./services/Authentication/components/Login/LoginFacebook";
+// import LoginGoogle from "./services/Authentication/components/Login/LoginGoogle";
+import Header from "./services/Dashboard/components/ChatComponents/Header";
+import SignUp from "./services/Authentication/components/SignUp";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      {/* <SignUp /> */}
+      {/* <LoginEmail /> */}
+      {/* <LoginFaceBook /> */}
+      {/* <LoginGoogle /> */}
     </div>
   );
 }
