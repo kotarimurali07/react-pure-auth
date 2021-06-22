@@ -15,13 +15,9 @@
 // export default App;
 
 import React from "react";
-import RootComponent from "./services/Dashboard/components/RootComponent";
+// import RootComponent from "./services/Dashboard/components/RootComponent";
 const App = () => {
-  return (
-    <div>
-      <RootComponent />
-    </div>
-  );
+  return <div>{/* <RootComponent /> */}</div>;
 };
 
 export default App;
