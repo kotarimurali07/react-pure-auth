@@ -1,9 +1,12 @@
 import { Button } from "@material-ui/core";
 import React from "react";
-const Presentation = () => {
+import { Redirect } from "react-router";
+const Presentation = (props) => {
+  const { handleLogin, auth } = props;
   return (
     <div>
-      <Button>Google</Button>
+      {auth.uid ? <Redirect to="/" /> : null}
+      <Button onClick={handleLogin}>Google</Button>
     </div>
   );
 };

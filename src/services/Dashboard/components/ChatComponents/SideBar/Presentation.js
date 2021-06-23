@@ -23,7 +23,7 @@ const Presentation = () => {
         style={{
           height: "100%",
           width: "260px",
-          backgroundColor: "#3f0340",
+          backgroundColor: "blue",
           paddingTop: "10px",
         }}
       >

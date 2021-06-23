@@ -9,7 +9,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { EmailValadation } from "../../../../shared/valadation";
 import { Link } from "react-router-dom";
 const Presentation = (props) => {
-  const { email, setEmail, open } = props;
+  const { email, setEmail, open, handleSubmit } = props;
   return (
     <div>
       <Dialog open={open} aria-labelledby="form-dialog-title">
@@ -39,7 +39,11 @@ const Presentation = (props) => {
           <Button color="primary">
             <Link to="/Login">cancel</Link>
           </Button>
-          <Button color="primary" disabled={!EmailValadation(email)}>
+          <Button
+            color="primary"
+            disabled={!EmailValadation(email)}
+            onClick={handleSubmit}
+          >
             <Link to="/Login">Done</Link>
           </Button>
         </DialogActions>

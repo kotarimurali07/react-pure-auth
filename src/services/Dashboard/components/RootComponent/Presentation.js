@@ -8,7 +8,9 @@ const Presentation = () => {
       <Grid>
         <Header />
       </Grid>
-      <Grid>{/* <SideBar /> */}</Grid>
+      <Grid>
+        <SideBar />
+      </Grid>
     </div>
   );
 };

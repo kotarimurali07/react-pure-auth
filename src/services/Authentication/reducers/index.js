@@ -5,7 +5,6 @@ import { LoginGoogleReducer } from "./LoginGoogleReducer";
 import { LogOutReducer } from "./LogOutReducer";
 import { SignUpReducer } from "./SignUpReducer";
 import { combineReducers } from "redux";
-import { firebaseReducer } from "react-redux-firebase";
 
 export const authReducer = combineReducers({
   emailLogin: LoginEmailReducer,
@@ -14,5 +13,4 @@ export const authReducer = combineReducers({
   logout: LogOutReducer,
   signup: SignUpReducer,
   forgotPassword: ForgotPasswordReducer,
-  firebase: firebaseReducer,
 });
