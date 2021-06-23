@@ -20,7 +20,12 @@ const Presentation = () => {
     <Drawer anchor="left" open={open}>
       <div
         className="sidebar"
-        style={{ height: "100%", width: "260px", backgroundColor: "#3f0340" }}
+        style={{
+          height: "100%",
+          width: "260px",
+          backgroundColor: "#3f0340",
+          paddingTop: "10px",
+        }}
       >
         <div className="sidebar_header">
           <div className="sidebar_info">
