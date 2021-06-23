@@ -1,56 +1,48 @@
-import React, { useState } from "react";
-import { Drawer } from "@material-ui/core";
-import "../../../styles/SideBar.css";
-import SideBarOption from "../SideBarOption";
+import React from "react";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import CreateIcon from "@material-ui/icons/Create";
+import "../../../styles/Sidebar.css";
 import InsertCommentIcon from "@material-ui/icons/InsertComment";
+import SidebarOption from "../SidebarOption";
 import InboxIcon from "@material-ui/icons/Inbox";
 import DraftsIcon from "@material-ui/icons/Drafts";
-import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
+import BookmarksIcon from "@material-ui/icons/Bookmarks";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import AppsIcon from "@material-ui/icons/Apps";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddIcon from "@material-ui/icons/Add";
-const Presentation = () => {
-  const [open, setOpen] = useState(true);
+const Presentation = (props) => {
+  const { channels, auth } = props;
   return (
-    <Drawer anchor="left" open={open}>
-      <div
-        className="sidebar"
-        style={{
-          height: "100%",
-          width: "260px",
-          backgroundColor: "blue",
-          paddingTop: "10px",
-        }}
-      >
-        <div className="sidebar_header">
-          <div className="sidebar_info">
-            <h2>user name</h2>
-            <h3>
-              <FiberManualRecordIcon />
-              user name
-            </h3>
-          </div>
-          <CreateIcon />
+    <div className="sidebar">
+      <div className="sidebar__header">
+        <div className="sidebar__info">
+          <h2>murali🚀</h2>
+          <h3>
+            <FiberManualRecordIcon />
+            {/* {auth.email} */}heloo
+          </h3>
         </div>
-        <SideBarOption Icon={InsertCommentIcon} title={"Thread"} />
-        <SideBarOption Icon={InboxIcon} title={"Mentions & reactions"} />
-        <SideBarOption Icon={DraftsIcon} title={"Saved items"} />
-        <SideBarOption Icon={BookmarkBorderIcon} title={"Channel browser"} />
-        <SideBarOption Icon={PeopleAltIcon} title={"People & user groups"} />
-        <SideBarOption Icon={AppsIcon} title={"Apps"} />
-        <SideBarOption Icon={FileCopyIcon} title={"File browser"} />
-        <SideBarOption Icon={ExpandLessIcon} title={"Show less"} />
-        <hr />
-        <SideBarOption Icon={ExpandMoreIcon} title={"Channels"} />
-        <hr />
-        <SideBarOption Icon={AddIcon} title={"Add Channel"} addChannelOption />
+        <CreateIcon />
       </div>
-    </Drawer>
+      <SidebarOption Icon={InsertCommentIcon} title="Threds" />
+      <SidebarOption Icon={InboxIcon} title="Menctions & reactions" />
+      <SidebarOption Icon={DraftsIcon} title="Saved items" />
+      <SidebarOption Icon={BookmarksIcon} title="Channel browser" />
+      <SidebarOption Icon={PeopleAltIcon} title="People & user groups" />
+      <SidebarOption Icon={AppsIcon} title="Apps" />
+      <SidebarOption Icon={FileCopyIcon} title="File browser" />
+      <SidebarOption Icon={ExpandLessIcon} title="show less" />
+      <hr />
+      <SidebarOption Icon={ExpandMoreIcon} title="channels" />
+      <hr />
+      <SidebarOption Icon={AddIcon} addChannelOption title="Add channel" />
+      {channels.map((channel) => (
+        <SidebarOption title={channel.name} id={channel.id} />
+      ))}
+    </div>
   );
 };
 

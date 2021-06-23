@@ -3,10 +3,8 @@ import Presentation from "./Presentation";
 import { connect } from "react-redux";
 import { handleEmailLogin } from "../../../middleware/index";
 const Container = (props) => {
-  console.log(props);
   const { _handleEmailLogin, auth } = props;
-  console.log(auth.id);
-  console.log(_handleEmailLogin);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = (e) => {
@@ -28,7 +26,6 @@ const Container = (props) => {
   );
 };
 const mapStateToProps = (state) => {
-  console.log(state.firebase.auth.uid);
   return {
     auth: state.firebase.auth,
   };
