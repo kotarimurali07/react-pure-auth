@@ -3,16 +3,32 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockRoundedIcon from "@material-ui/icons/LockRounded";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { useStyles } from "../../styles/SignUp";
-const Presentation = () => {
+import {
+  EmailValadation,
+  PasswordValadation,
+  NameValadation,
+} from "../../../../shared/valadation";
+const Presentation = (props) => {
+  const {
+    firstName,
+    setFirstName,
+    lastName,
+    setLastName,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    // buttonDisble,
+    // handleSubmitSignUP,
+    // auth,
+  } = props;
   const classes = useStyles();
   return (
     <div>
@@ -37,6 +53,13 @@ const Presentation = () => {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  helperText={
+                    firstName.length && !NameValadation(firstName)
+                      ? "Enter valid Name"
+                      : null
+                  }
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -48,6 +71,13 @@ const Presentation = () => {
                   label="Last Name"
                   name="lastName"
                   autoComplete="lname"
+                  value={lastName}
+                  helperText={
+                    lastName.length && !NameValadation(lastName)
+                      ? "Enter valid Name"
+                      : null
+                  }
+                  onChange={(e) => setLastName(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -59,6 +89,13 @@ const Presentation = () => {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  helperText={
+                    email.length && !EmailValadation(email)
+                      ? "Enter valid email"
+                      : null
+                  }
                 />
               </Grid>
               <Grid item xs={12}>
@@ -70,15 +107,16 @@ const Presentation = () => {
                   label="Password"
                   type="password"
                   id="password"
-                  autoComplete="current-password"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={
-                    <Checkbox value="allowExtraEmails" color="primary" />
+                  value={password}
+                  helperText={
+                    password.length &&
+                    password.length > 6 &&
+                    PasswordValadation(password)
+                      ? null
+                      : "password must contain 6 digits"
                   }
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoComplete="current-password"
                 />
               </Grid>
             </Grid>
@@ -87,13 +125,20 @@ const Presentation = () => {
               fullWidth
               variant="contained"
               color="primary"
+              disabled={
+                !EmailValadation(email) ||
+                !NameValadation(firstName) ||
+                !NameValadation(lastName) ||
+                !PasswordValadation(password) ||
+                !password.length > 6
+              }
               className={classes.submit}
             >
               Sign Up
             </Button>
             <Grid container justify="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link to="/Login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

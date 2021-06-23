@@ -1,23 +1,24 @@
-// import React from "react";
-// import Header from "./services/Dashboard/components/ChatComponents/Header";
-// import SideBar from "./services/Dashboard/components/ChatComponents/SideBar";
-// import SideBarOption from "./services/Dashboard/components/ChatComponents/SideBarOption";
-// const App = () => {
-//   return (
-//     <div>
-//       <Header />
-//       <SideBar />
-//       <SideBarOption />
-//     </div>
-//   );
-// };
-
-// export default App;
-
 import React from "react";
-// import RootComponent from "./services/Dashboard/components/RootComponent";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ForgotPassword from "./services/Authentication/components/ForgotPassword";
+import LoginEmail from "./services/Authentication/components/Login/LoginEmail";
+import SignUp from "./services/Authentication/components/SignUp";
 const App = () => {
-  return <div>{/* <RootComponent /> */}</div>;
+  return (
+    <div>
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route path="/Login" component={LoginEmail} />
+            <Route path="/ForgotPassword" component={ForgotPassword} />
+            <Route path="/SignUp" component={SignUp} />
+          </Switch>
+        </Router>
+      </Provider>
+    </div>
+  );
 };
 
 export default App;

@@ -5,14 +5,19 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockRoundedIcon from "@material-ui/icons/LockRounded";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { useStyles } from "../../../styles/LoginEmail";
-const Presentation = () => {
+import {
+  EmailValadation,
+  PasswordValadation,
+} from "../../../../../shared/valadation";
+const Presentation = (props) => {
+  const { email, setEmail, password, setPassword, handleChange } = props;
   const classes = useStyles();
   return (
     <div>
@@ -36,6 +41,13 @@ const Presentation = () => {
               name="email"
               autoComplete="email"
               autoFocus
+              helperText={
+                email.length && !EmailValadation(email)
+                  ? "Enter valid email"
+                  : null
+              }
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               variant="outlined"
@@ -46,6 +58,15 @@ const Presentation = () => {
               label="Password"
               type="password"
               id="password"
+              value={password}
+              helperText={
+                password.length &&
+                password.length > 6 &&
+                PasswordValadation(password)
+                  ? null
+                  : "password must contain 6 digits"
+              }
+              onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
             />
             <FormControlLabel
@@ -58,17 +79,20 @@ const Presentation = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
+              disabled={
+                !EmailValadation(email) || !PasswordValadation(password)
+              }
             >
               Sign In
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link to="/ForgotPassword" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link to="/SignUp" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
