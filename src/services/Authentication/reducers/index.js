@@ -7,11 +7,12 @@ import { SignUpReducer } from "./SignUpReducer";
 import { combineReducers } from "redux";
 import { firebaseReducer } from "react-redux-firebase";
 
-export const rootReducer = combineReducers({
+export const authReducer = combineReducers({
   emailLogin: LoginEmailReducer,
   facebookLogin: LoginFacebookReducer,
   googleLogin: LoginGoogleReducer,
   logout: LogOutReducer,
   signup: SignUpReducer,
-  firebaseReducer: firebaseReducer,
+  forgotPassword: ForgotPasswordReducer,
+  firebase: firebaseReducer,
 });

@@ -11,16 +11,26 @@ import Box from "@material-ui/core/Box";
 import LockRoundedIcon from "@material-ui/icons/LockRounded";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
+import { Redirect } from "react-router";
 import { useStyles } from "../../../styles/LoginEmail";
 import {
   EmailValadation,
   PasswordValadation,
 } from "../../../../../shared/valadation";
 const Presentation = (props) => {
-  const { email, setEmail, password, setPassword, handleChange } = props;
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    handleChange,
+    handleSubmit,
+    auth,
+  } = props;
   const classes = useStyles();
   return (
     <div>
+      {auth.uid ? <Redirect to="/" /> : null}
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
@@ -60,11 +70,9 @@ const Presentation = (props) => {
               id="password"
               value={password}
               helperText={
-                password.length &&
-                password.length > 6 &&
-                PasswordValadation(password)
-                  ? null
-                  : "password must contain 6 digits"
+                password.length && !PasswordValadation(password)
+                  ? "password must contain 6 digits"
+                  : null
               }
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
@@ -78,6 +86,7 @@ const Presentation = (props) => {
               fullWidth
               variant="contained"
               color="primary"
+              onClick={handleSubmit}
               className={classes.submit}
               disabled={
                 !EmailValadation(email) || !PasswordValadation(password)

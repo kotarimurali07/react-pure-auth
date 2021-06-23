@@ -87,23 +87,3 @@ export const signUpFailure = () => {
     type: ACTION.SIGN_UP_FAILURE,
   };
 };
-
-//log-out
-
-export const logOutRequest = () => {
-  return {
-    type: ACTION.LOGOUT_FAILURE,
-  };
-};
-
-export const logOutSuccess = () => {
-  return {
-    type: ACTION.LOGOUT_SUCCESS,
-  };
-};
-
-export const logOutFailure = () => {
-  return {
-    type: ACTION.LOGOUT_FAILURE,
-  };
-};
