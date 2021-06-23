@@ -17,6 +17,21 @@ import {
   EmailValadation,
   PasswordValadation,
 } from "../../../../../shared/valadation";
+import LoginFacebook from "../LoginFacebook";
+import LoginGoogle from "../LoginGoogle";
+// function Copyright() {
+//   return (
+//     // <Typography variant="body2" color="textSecondary" align="center">
+//     //   <div style={{ backgroundColor: "blue" }}>
+//     //     <LoginFacebook />
+//     //   </div>
+//     //   <hr />
+//     //   <div style={{ backgroundColor: "blue" }}>
+//     //     <LoginGoogle />
+//     //   </div>
+//     // </Typography>
+//   );
+// }
 const Presentation = (props) => {
   const {
     email,

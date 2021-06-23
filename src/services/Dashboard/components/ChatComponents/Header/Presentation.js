@@ -17,7 +17,7 @@ const Presentation = (props) => {
           <AppBar position="static">
             <Toolbar>
               <Typography variant="h6" className={classes.title}>
-                TODO-LIST
+                CHAT-APP
               </Typography>
               <Button color="inherit" onClick={handleLogout}>
                 LOGOUT

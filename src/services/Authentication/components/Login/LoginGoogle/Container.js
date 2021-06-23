@@ -1,11 +1,30 @@
 import React from "react";
 import Presentation from "./Presentation";
-const Container = () => {
+import { connect } from "react-redux";
+import { handleGoogleLogin } from "../../../middleware/index";
+const Container = (props) => {
+  const { auth, _handleGoogleLogin } = props;
+  const handleLogin = (e) => {
+    e.preventDefault();
+    _handleGoogleLogin();
+  };
   return (
     <div>
-      <Presentation />
+      <Presentation handleLogin={handleLogin} auth={auth} />
     </div>
   );
 };
 
-export default Container;
+const mapStateToProps = (state) => {
+  console.log(state.firebase.auth.uid);
+  return {
+    auth: state.firebase.auth,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    _handleGoogleLogin: () => dispatch(handleGoogleLogin()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Container);

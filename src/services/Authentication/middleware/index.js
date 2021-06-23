@@ -15,11 +15,29 @@ import {
   signUpSuccess,
   signUpFailure,
 } from "../actions/actionCreators";
+import { Googleprovider } from "../../../config/firebaseConfig";
+export const handleGoogleLogin = () => {
+  return (dispatch, getState, { getFirebase }) => {
+    const firebase = getFirebase();
+    dispatch(loginGoogleRequest());
+    firebase
+      .auth()
+      .getRedirectResult()
+      .then((user) => {
+        dispatch(loginGoogleSuccess());
+      })
+      .catch((err) => {
+        console.log(err.message);
+        dispatch(loginGoogleFailure());
+      });
+  };
+};
 
+//Login with email and password
 export const handleEmailLogin = (cred) => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
-    // SuccessSnackBar("please wait...........");
+
     dispatch(loginEmailRequest());
 
     firebase
@@ -27,7 +45,7 @@ export const handleEmailLogin = (cred) => {
       .signInWithEmailAndPassword(cred.email, cred.password)
       .then((userDetails) => {
         const user = userDetails.user;
-        // console.log(user);
+
         console.log("user logged in successfulyy");
         dispatch(loginEmailSuccess());
       })
