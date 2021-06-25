@@ -1,7 +1,7 @@
 import { LogOutReducer } from "./logoutReducer";
 import { combineReducers } from "redux";
-import { channelReducer } from "./channelReducer";
+import { todoReducer } from "./todoReducer";
 export const dashboardReducer = combineReducers({
   logout: LogOutReducer,
-  channels: channelReducer,
+  todos: todoReducer,
 });

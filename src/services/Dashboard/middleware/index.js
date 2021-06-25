@@ -2,9 +2,9 @@ import {
   logOutRequest,
   logOutSuccess,
   logOutFailure,
-  channelsDataRequest,
-  channelsDataSuccess,
-  channelsDataFailure,
+  todoDataRequest,
+  todoDataSuccess,
+  todoDataFailure,
 } from "../actions/actionCreators";
 import { db } from "../../../config/firebaseConfig";
 //logout
@@ -26,20 +26,23 @@ export const handleLogout = () => {
       });
   };
 };
-//get-channels-data
 
-export const getChannelsData = () => {
-  return (dispatch, getState, { getFirebase }) => {
-    dispatch(channelsDataRequest());
-    const data = db
-      .collection("ROOMS")
-      .doc()
-      .onSnapshot((snapshot) => {
-        snapshot.docs.map((doc) => ({
-          id: doc.is,
-          name: doc.data().name,
-        }));
+export const handleTodo = () => {
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    dispatch(todoDataRequest());
+    firestore
+      .collection("TODOS")
+      .get()
+      .then((snap) => {
+        snap.docs.forEach((doc) => {
+          console.log(doc.data());
+          dispatch(todoDataSuccess(doc.data()));
+        });
+      })
+      .catch((err) => {
+        console.log(err.message);
+        dispatch(todoDataFailure());
       });
-    console.log(data);
   };
 };
