@@ -1,5 +1,5 @@
 import React from "react";
-import Chat from "../../../styles/Chat.css";
+// import Chat from "../../../styles/Chat.css";
 import Message from "../Message";
 import StarBorderOutlinedIcon from "@material-ui/icons/StarBorderOutlined";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";

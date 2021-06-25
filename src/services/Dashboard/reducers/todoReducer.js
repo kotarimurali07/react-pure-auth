@@ -1,19 +1,19 @@
 import { ACTION } from "../actions/actionTypes";
 import { initialState } from "./initialState";
 
-export const channelReducer = (state, action = initialState) => {
+export const todoReducer = (state, action = initialState) => {
   switch (action.type) {
-    case ACTION.CHANNELS_DATA_REQUEST:
+    case ACTION.TODO_DATA_REQUEST:
       return {
         ...state,
         logOutLoading: true,
       };
-    case ACTION.CHANNELS_DATA_SUCCESS:
+    case ACTION.TODO_DATA_SUCCESS:
       return {
         ...state,
-        channels: action.payload,
+        todos: action.payload,
       };
-    case ACTION.CHANNELS_DATA_FAILURE:
+    case ACTION.TODO_DATA_FAILURE:
       return {
         ...state,
         logOutLoading: false,

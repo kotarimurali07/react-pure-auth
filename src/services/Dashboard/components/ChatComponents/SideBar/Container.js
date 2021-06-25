@@ -5,7 +5,7 @@ import { getChannelsData } from "../../../middleware/index";
 import { db } from "../../../../../config/firebaseConfig";
 const Container = (props) => {
   const { auth } = props;
-  console.log(auth);
+
   const [channels, setChannels] = useState([]);
   useEffect(() => {
     db.collection("ROOMS").onSnapshot((snapshot) =>

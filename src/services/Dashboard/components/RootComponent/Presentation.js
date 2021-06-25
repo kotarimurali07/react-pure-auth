@@ -4,6 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import Header from "../ChatComponents/Header";
 import SideBar from "../ChatComponents/Sidebar";
 import Chat from "../ChatComponents/Chat";
+import TodoList from "../ChatComponents/TodoList";
 const Presentation = () => {
   return (
     <div>
@@ -17,7 +18,7 @@ const Presentation = () => {
           <SideBar />
         </Grid>
         <Grid item xs={9}>
-          <Chat />
+          <TodoList />
         </Grid>
       </Grid>
     </div>

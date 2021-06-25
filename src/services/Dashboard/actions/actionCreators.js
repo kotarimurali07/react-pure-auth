@@ -26,21 +26,21 @@ export const logOutFailure = () => {
   };
 };
 //channels-data
-export const channelsDataRequest = () => {
+export const todoDataRequest = () => {
   return {
-    type: ACTION.CHANNELS_DATA_REQUEST,
+    type: ACTION.TODO_DATA_REQUEST,
   };
 };
 
-export const channelsDataSuccess = (payload) => {
+export const todoDataSuccess = (payload) => {
   return {
-    type: ACTION.CHANNELS_DATA_SUCCESS,
+    type: ACTION.TODO_DATA_SUCCESS,
     payload,
   };
 };
 
-export const channelsDataFailure = () => {
+export const todoDataFailure = () => {
   return {
-    type: ACTION.CHANNELS_DATA_FAILURE,
+    type: ACTION.TODO_DATA_FAILURE,
   };
 };
